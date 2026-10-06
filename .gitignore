@@ -1,37 +1,23 @@
-*
-!*/
-!/.gitignore
-!**/*.cpp
-!**/*.c
-!**/*.h
-!**/*.hpp
-!**/*.ui
-!**/*.pro
-!/shaders
-!**/*.frag
-!**/*.vert
-**/assimp
-
-
-
-# Qt-es
-object_script.*.Release
-object_script.*.Debug
-*_plugin_import.cpp
-/.qmake.cache
-/.qmake.stash
+# Qt Creator
 *.pro.user
 *.pro.user.*
-*.qbs.user
-*.qbs.user.*
-*.moc
+
+# Build
+build/
+Build/
+cmake-build-*/
+
+# Compilación
+*.o
+*.obj
+Makefile
+
+# Ejecutables
+laberint
+
+# Qt MOC
 moc_*.cpp
-moc_*.h
-qrc_*.cpp
-ui_*.h
-*.qmlc
-*.jsc
-Makefile*
-*build-*
-*.qm
-*.prl
+moc_*.o
+
+# Otros archivos generados
+*.moc
