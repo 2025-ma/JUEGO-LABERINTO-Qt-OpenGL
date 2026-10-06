@@ -11,3 +11,13 @@ cmake-build-*/
 *.o
 *.obj
 Makefile
+
+# Ejecutables
+laberint
+
+# Qt MOC
+moc_*.cpp
+moc_*.o
+
+# Otros archivos generados
+*.moc
