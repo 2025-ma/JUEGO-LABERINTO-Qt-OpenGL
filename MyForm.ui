@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>IDI-Lab</string>
   </property>
-  <widget class="MyGLWidget" name="widget" native="true">
+  <widget class="Laberint" name="widget" native="true">
    <property name="geometry">
     <rect>
      <x>9</x>
@@ -532,9 +532,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyGLWidget</class>
+   <class>Laberint</class>
    <extends>QWidget</extends>
-   <header>MyGLWidget.h</header>
+   <header>Laberint.h</header>
    <container>1</container>
    <slots>
     <signal>coinsChanged(int)</signal>

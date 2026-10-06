@@ -1,5 +1,5 @@
-// MyGLWidget.h
-#include "BL2GLWidget.h"
+
+#include "LaberintBase.h"
 #include "Model/model.h"
 #include "assimp/Mesh.h"
 //para el giro de las monedas
@@ -8,12 +8,12 @@
 #include <QMouseEvent>
 #include <QColorDialog>
 
-class MyGLWidget : public BL2GLWidget {
+class Laberint : public LaberintBase {
   Q_OBJECT
 
   public:
-   MyGLWidget(QWidget *parent=0);
-    ~MyGLWidget();
+   Laberint(QWidget *parent=0);
+    ~Laberint();
 
   protected:
     // initializeGL - Aqui incluim les inicialitzacions del contexte grafic.

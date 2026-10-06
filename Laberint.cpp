@@ -1,6 +1,6 @@
 
-// MyGLWidget.cpp
-#include "MyGLWidget.h"
+
+#include "Laberint.h"
 #include <iostream>
 #include <stdio.h>
 #include<utility>
@@ -12,17 +12,17 @@
 #define DEBUG(text) std::cout << __FILE__ << " " << __LINE__ << " " << __FUNCTION__ << ":"<<text<<std::endl;
 
 
-                                                                                MyGLWidget::MyGLWidget(QWidget *parent): BL2GLWidget(parent) {
+ Laberint::Laberint(QWidget *parent): LaberintBase(parent) {
 
     connect(&timer, SIGNAL(timeout()),this, SLOT(rotateCoins()));
     timer.start(16);
 
 }
 
-MyGLWidget::~MyGLWidget() {
+Laberint::~Laberint() {
 }
 
-void MyGLWidget::resizeGL (int width, int height) {
+void Laberint::resizeGL (int width, int height) {
 // Aquest codi és necessari únicament per a MACs amb pantalla retina.
 #ifdef __APPLE__
     GLint vp[4];
@@ -38,7 +38,7 @@ void MyGLWidget::resizeGL (int width, int height) {
 }
 
 
-void MyGLWidget::initializeGL ( ){
+void Laberint::initializeGL ( ){
 
     DEBUG ("Model carregat");
     // Cal inicialitzar l'ús de les funcions d'OpenGL
@@ -117,7 +117,7 @@ void MyGLWidget::initializeGL ( ){
 
 
 
-void MyGLWidget::paintGL ( ){
+void Laberint::paintGL ( ){
 
     glUseProgram(program->programId()); //para cambio uniform
     glUniform3f(colorFocusLoc, lightColor.redF(),lightColor.greenF(), lightColor.blueF());
@@ -273,7 +273,7 @@ void MyGLWidget::paintGL ( ){
     //Restaurem viewport original
     glViewport(0,0,ample,alt);
 }
-void MyGLWidget::pintarSegonsLaberint() {
+void Laberint::pintarSegonsLaberint() {
 
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < M; ++j) {
@@ -355,7 +355,7 @@ void MyGLWidget::pintarSegonsLaberint() {
     glUniform1i(texActiveLoc, 0);
 }
 
-void MyGLWidget::inicializaPosMorty() {
+void Laberint::inicializaPosMorty() {
 
     angleMovMorty = 0.0f;
     dirMorty = glm::vec3(0.0f,0.0f,1.0f);
@@ -378,7 +378,7 @@ void MyGLWidget::inicializaPosMorty() {
 
 
 //TRANSFORMACIONS
-void MyGLWidget::modelTransformMorty() {
+void Laberint::modelTransformMorty() {
     // Matriu de transformació de model
     glm::mat4 transform (1.0f);
     //altura inicial
@@ -405,7 +405,7 @@ void MyGLWidget::modelTransformMorty() {
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
-void MyGLWidget::inicializaPosFantasma() {
+void Laberint::inicializaPosFantasma() {
 
     //Inicialmente mira hacia  z postiva
     dirFantasma = glm::vec3 (0.0f,0.0f,1.0f);
@@ -425,7 +425,7 @@ void MyGLWidget::inicializaPosFantasma() {
 
 }
 
-void MyGLWidget::moveFantasma () {
+void Laberint::moveFantasma () {
     //revisar si puede moverse hacia adelanta
     /*1.Buscar posición modelo en el laberinto
             !!posxFantasma = j+0.5
@@ -517,7 +517,7 @@ void MyGLWidget::moveFantasma () {
 
 }
 
-void MyGLWidget::modelTransformFantasma() {
+void Laberint::modelTransformFantasma() {
     // Matriu de transformació de model
     glm::mat4 transform (1.0f);
     //altura inicial
@@ -541,7 +541,7 @@ void MyGLWidget::modelTransformFantasma() {
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
-void MyGLWidget::modelTransformMoneda(int fila, int colum) {
+void Laberint::modelTransformMoneda(int fila, int colum) {
     // Matriu de transformació de model
     glm::mat4 transform (1.0f);
     //altura inicial
@@ -566,7 +566,7 @@ void MyGLWidget::modelTransformMoneda(int fila, int colum) {
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 //sin rotación y mirando hacia arriba
-void MyGLWidget::modelTransformMonedaMiniMapa (int fila, int colum) {
+void Laberint::modelTransformMonedaMiniMapa (int fila, int colum) {
     // Matriu de transformació de model
     glm::mat4 transform (1.0f);
     //altura inicial
@@ -591,7 +591,7 @@ void MyGLWidget::modelTransformMonedaMiniMapa (int fila, int colum) {
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
-void MyGLWidget::modelTransformTorre(int fila, int colum) {
+void Laberint::modelTransformTorre(int fila, int colum) {
 
     // Matriu de transformació de model
     glm::mat4 transform (1.0f);
@@ -639,7 +639,7 @@ void MyGLWidget::modelTransformTorre(int fila, int colum) {
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
-void MyGLWidget::modelTransformCub(int i, int j) {
+void Laberint::modelTransformCub(int i, int j) {
     // 1. Inicializar la matriz de transformación de modelo
     glm::mat4 transform(1.0f);
 
@@ -691,7 +691,7 @@ void MyGLWidget::modelTransformCub (int fila, int colum) {
 }
 */
 
-void MyGLWidget::modelTransformTerra (int fila, int colum) {
+void Laberint::modelTransformTerra (int fila, int colum) {
     glm::mat4 transform (1.0f);
 
     // mover a posición laberinto (inicialmente a (0,0,0)
@@ -706,7 +706,7 @@ void MyGLWidget::modelTransformTerra (int fila, int colum) {
 
 
 
-void MyGLWidget::definicioMatriuLaberint() {
+void Laberint::definicioMatriuLaberint() {
     int aux[N][M] = {
 
         {1,4,1,1,1,1,1,1,1,1},
@@ -730,7 +730,7 @@ void MyGLWidget::definicioMatriuLaberint() {
     }
 }
 
-glm::mat4 MyGLWidget::calcularTGMoneda(int fila, int colum, bool esMinimapa) {
+glm::mat4 Laberint::calcularTGMoneda(int fila, int colum, bool esMinimapa) {
     glm::mat4 transform(1.0f);
     float altini = ymaxMoneda - yminMoneda;
     float escalaLocal = 0.5f / altini;
@@ -751,7 +751,7 @@ glm::mat4 MyGLWidget::calcularTGMoneda(int fila, int colum, bool esMinimapa) {
 }
 
 
-void MyGLWidget::generaMonedas(int numMonedas) {
+void Laberint::generaMonedas(int numMonedas) {
 
     int monedasGeneradas = 0;
 
@@ -770,7 +770,7 @@ void MyGLWidget::generaMonedas(int numMonedas) {
     }
 }
 
-void MyGLWidget::iniPosMorty() {
+void Laberint::iniPosMorty() {
     float* vertices = MortyModel.VBO_vertices();
 
     xminMorty  = yminMorty  = zminMorty  = 1e9;
@@ -800,7 +800,7 @@ void MyGLWidget::iniPosMorty() {
 }
 
 
-void MyGLWidget::creaBuffersMorty () {
+void Laberint::creaBuffersMorty () {
 
     //Carregar Model Morty
     MortyModel.load ("model3D/Morty.obj");
@@ -876,7 +876,7 @@ void MyGLWidget::creaBuffersMorty () {
 
 
 
-void MyGLWidget::iniPosFantasma() {
+void Laberint::iniPosFantasma() {
     float* vertices = FantasmaModel.VBO_vertices();
 
     xminFantasma = yminFantasma  = zminFantasma = 1e9;
@@ -905,7 +905,7 @@ void MyGLWidget::iniPosFantasma() {
     std::cout << "zminFantasma: " << zminFantasma<< "zmaxFantasma: " << zmaxFantasma << "fi " << std::endl;
 }
 
-void MyGLWidget::creaBuffersFantasma() {
+void Laberint::creaBuffersFantasma() {
     //Carregar Model Fantasma
     FantasmaModel.load ("model3D/Fantasma.obj");
     // Creació VAO_Morty
@@ -975,7 +975,7 @@ void MyGLWidget::creaBuffersFantasma() {
 
 }
 
-void MyGLWidget::iniPosMoneda() {
+void Laberint::iniPosMoneda() {
     float* vertices = MonedaModel.VBO_vertices();
 
     xminMoneda  = yminMoneda  = zminMoneda  = 1e9;
@@ -1005,7 +1005,7 @@ void MyGLWidget::iniPosMoneda() {
 }
 
 //slot de giro de monedas
-void MyGLWidget::rotateCoins() {
+void Laberint::rotateCoins() {
 
     makeCurrent();
 
@@ -1018,7 +1018,7 @@ void MyGLWidget::rotateCoins() {
     }
 }
 
-void MyGLWidget::creaBuffersMoneda() {
+void Laberint::creaBuffersMoneda() {
     //Carregar Model Moneda
     MonedaModel.load ("model3D/Coin.obj");
     // Creació VAO_Morty
@@ -1089,7 +1089,7 @@ void MyGLWidget::creaBuffersMoneda() {
 
 }
 
-void MyGLWidget::iniPosTorre() {
+void Laberint::iniPosTorre() {
 
     float* vertices = TorreModel.VBO_vertices();
 
@@ -1119,7 +1119,7 @@ void MyGLWidget::iniPosTorre() {
     std::cout << zminTorre<< "zmax: " << zmaxTorre << "fi " << std::endl;
 }
 
-void MyGLWidget::iniPosParet() {
+void Laberint::iniPosParet() {
     // Comprobamos primero que el modelo esté cargado para evitar que falle
     if (blockParet == nullptr) {
         qDebug() << "Error: blockParet no está inicializado todavía.";
@@ -1143,7 +1143,7 @@ void MyGLWidget::iniPosParet() {
     qDebug() << "Z:" << zminParet << "a" << zmaxParet << " (Tam:" << (zmaxParet - zminParet) << ")";
 }
 
-void MyGLWidget::creaBuffersTorre() {
+void Laberint::creaBuffersTorre() {
     //Carregar Model Torre
     TorreModel.load ("model3D/tower.obj");
     // Creació VAO_torre
@@ -1212,14 +1212,14 @@ void MyGLWidget::creaBuffersTorre() {
 
 }
 
-void MyGLWidget::creaBuffersTorreText() {
+void Laberint::creaBuffersTorreText() {
     blockTorre = new Mesh(this, vertexLoc, normalLoc, texUVLoc, matdiffLoc, matspecLoc, matambLoc, matshinLoc);
     blockTorre->LoadMesh("model3D/tower.obj");
 }
 
 // Funció d'utilitat per crear un VAO d'un cub amb l'aresta mínima a l'origen
 // i d'aresta unitària.
-void MyGLWidget::creaBuffersCub()
+void Laberint::creaBuffersCub()
 {
     // Dades del cub
     // Vèrtexs del cub
@@ -1386,15 +1386,15 @@ void MyGLWidget::creaBuffersCub()
    */
 }
 
-void MyGLWidget::creaBuffersCubText() {
+void Laberint::creaBuffersCubText() {
 
     blockParet = new Mesh(this, vertexLoc, normalLoc, texUVLoc, matdiffLoc, matspecLoc, matambLoc, matshinLoc);
     blockParet->LoadMesh("model3D/block.obj");
 }
 
 
-void MyGLWidget::carregaShaders () {
-    BL2GLWidget::carregaShaders();
+void Laberint::carregaShaders () {
+    LaberintBase::carregaShaders();
 
     PMLoc = glGetUniformLocation(program->programId(), "PM");
     VMLoc = glGetUniformLocation(program->programId(), "VM");
@@ -1436,7 +1436,7 @@ void MyGLWidget::carregaShaders () {
 
 
 // keyPressEvent - Es cridat quan es prem una tecla
-void MyGLWidget::keyPressEvent (QKeyEvent *event) {
+void Laberint::keyPressEvent (QKeyEvent *event) {
     makeCurrent();
 
     //ZOOM SIEMPRE PERMITIDO
@@ -1572,11 +1572,11 @@ void MyGLWidget::keyPressEvent (QKeyEvent *event) {
     update();
 }
 
-void MyGLWidget::mouseReleaseEvent(QMouseEvent *){
+void Laberint::mouseReleaseEvent(QMouseEvent *){
     CurrentAction = NONE;
 }
 
-void MyGLWidget::mousePressEvent(QMouseEvent *e)
+void Laberint::mousePressEvent(QMouseEvent *e)
 {
     xClick = e->x();
     yClick = e->y();
@@ -1585,7 +1585,7 @@ void MyGLWidget::mousePressEvent(QMouseEvent *e)
     else if (e->button()==Qt::LeftButton) CurrentAction = ROTATE;
 }
 
-void MyGLWidget::mouseMoveEvent(QMouseEvent *e){
+void Laberint::mouseMoveEvent(QMouseEvent *e){
     makeCurrent();
     if (CurrentAction == ROTATE) {
         float dx = e->x() - xClick;
@@ -1613,7 +1613,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *e){
     }
 }
 
-void MyGLWidget::ViewTransformVistaGeneral() {
+void Laberint::ViewTransformVistaGeneral() {
     //AMB ANGLES DE EULER, PER ROTACIÓ
 
     VM = glm::mat4(1.0);
@@ -1647,7 +1647,7 @@ void MyGLWidget::ViewTransformVistaGeneral() {
 */
 }
 
-void MyGLWidget::ProjectTransformVistaGeneral() {
+void Laberint::ProjectTransformVistaGeneral() {
     //Camamra en 3 persona, (caja contenedora)
     //1. Càlcul Pmin i Pmax i Centre capsa contenidora
     glm::vec3 Pmin, Pmax;
@@ -1692,7 +1692,7 @@ void MyGLWidget::ProjectTransformVistaGeneral() {
 }
 
 
-void MyGLWidget::ViewTransformVistaPersona() {
+void Laberint::ViewTransformVistaPersona() {
     glm::vec3 OBS = glm::vec3(posxMorty,0.5f,poszMorty);
 
     glm::vec3 VPR = OBS + dirMorty;
@@ -1703,7 +1703,7 @@ void MyGLWidget::ViewTransformVistaPersona() {
     glUniformMatrix4fv (VMLoc,1,GL_FALSE,&VM[0][0]);
 
 }
-void MyGLWidget::ProjectTransformVistaPersona() {
+void Laberint::ProjectTransformVistaPersona() {
     glm::mat4 PM (1.0f);
     FOV = glm::radians(90.0f);
     float ra = float(ample)/float(alt);
@@ -1713,7 +1713,7 @@ void MyGLWidget::ProjectTransformVistaPersona() {
     glUniformMatrix4fv(PMLoc, 1, GL_FALSE, &PM[0][0]);
 }
 
-void MyGLWidget::ViewTransformMiniMapa() {
+void Laberint::ViewTransformMiniMapa() {
     glm::vec3 VPR = Centre;
     // cámara encima del centro
     glm::vec3 OBS = Centre + glm::vec3(0.0f, d, 0.0f);
@@ -1725,7 +1725,7 @@ void MyGLWidget::ViewTransformMiniMapa() {
     glUniformMatrix4fv(VMLoc, 1, GL_FALSE, &VM[0][0]);
 }
 
-void MyGLWidget::ProjectTransformMiniMapa() {
+void Laberint::ProjectTransformMiniMapa() {
     //Camara ortografica (todo se ve del mismo tamaño, no perspectiva)
     float mida = std::max(N, M);
     /*glm::ortho( left, right, bottom,top,near,far)
@@ -1738,7 +1738,7 @@ void MyGLWidget::ProjectTransformMiniMapa() {
 }
 
 //Reinicialitzem l'escena (càmeres, monedes regenerades, posició del personatge i enemic, etc.)
-void MyGLWidget::startGame()
+void Laberint::startGame()
 {
     gameStarted = true;
     gameOver = false;
@@ -1808,20 +1808,20 @@ void MyGLWidget::startGame()
 }
 
 //giro respecto a y
-void MyGLWidget::setPsi(int value)
+void Laberint::setPsi(int value)
 {
     psi = glm::radians(float(value));
     update();
 }
 
 //giro respecto a x
-void MyGLWidget::setTheta(int value)
+void Laberint::setTheta(int value)
 {
     theta = glm::radians(float(value));
     update();
 }
 
-void MyGLWidget::setZoom(int value)
+void Laberint::setZoom(int value)
 {
 
     angulo = glm::radians(float(value));
@@ -1835,7 +1835,7 @@ void MyGLWidget::setZoom(int value)
     update();
 }
 
-void MyGLWidget::setVistaGeneral() {
+void Laberint::setVistaGeneral() {
 
     if (vista == "Persona") {
         vista = "General";
@@ -1843,7 +1843,7 @@ void MyGLWidget::setVistaGeneral() {
     }
 }
 
-void MyGLWidget::setVistaPersona() {
+void Laberint::setVistaPersona() {
     if (vista == "General") {
         vista = "Persona";
         update();
@@ -1851,7 +1851,7 @@ void MyGLWidget::setVistaPersona() {
 }
 
 //Cambiar color iluminación
-void MyGLWidget::onChangeLightColor()
+void Laberint::onChangeLightColor()
 {
     QColor c = QColorDialog::getColor(lightColor, this);
 
@@ -1863,7 +1863,7 @@ void MyGLWidget::onChangeLightColor()
 
 
 //Pos luz
-void MyGLWidget::setAngleFocus(int value) {
+void Laberint::setAngleFocus(int value) {
 
     angleFocus = 180.0f - float(value); //inverso , ya que cuando el slider se mueva a la derecha el sol tam,bien lo hara hacia ese lado
     update();
@@ -1871,14 +1871,14 @@ void MyGLWidget::setAngleFocus(int value) {
 
 
 
-void MyGLWidget::setModeNit(bool actiu) {
+void Laberint::setModeNit(bool actiu) {
     makeCurrent();
     modeNit = actiu;
     update();
 }
 
 
-void MyGLWidget::setRotacionMonedas(bool activa) {
+void Laberint::setRotacionMonedas(bool activa) {
     makeCurrent();
     if (rotacionMonedas != activa) {
         rotacionMonedas = activa;

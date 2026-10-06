@@ -7,13 +7,13 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
-class BL2GLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core 
+class LaberintBase: public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core 
 {
   Q_OBJECT
 
   public:
-    BL2GLWidget (QWidget *parent=0);
-    ~BL2GLWidget ();
+    LaberintBase (QWidget *parent=0);
+    ~LaberintBase ();
 
   protected:
     // initializeGL - Aqui incluim les inicialitzacions del contexte grafic.

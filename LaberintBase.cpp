@@ -1,19 +1,19 @@
-#include "BL2GLWidget.h"
+#include "LaberintBase.h"
 
 #include <iostream>
 
-BL2GLWidget::BL2GLWidget (QWidget* parent) : QOpenGLWidget(parent), program(NULL)
+LaberintBase::LaberintBase (QWidget* parent) : QOpenGLWidget(parent), program(NULL)
 {
     setFocusPolicy(Qt::StrongFocus);  // per rebre events de teclat
 }
 
-BL2GLWidget::~BL2GLWidget ()
+LaberintBase::~LaberintBase ()
 {
     if (program != NULL)
         delete program;
 }
 
-void BL2GLWidget::initializeGL ()
+void LaberintBase::initializeGL ()
 {    // Cal inicialitzar l'ús de les funcions d'OpenGL
     initializeOpenGLFunctions();
 
@@ -23,7 +23,7 @@ void BL2GLWidget::initializeGL ()
     escala = 1.0f;
 }
 
-void BL2GLWidget::paintGL ()
+void LaberintBase::paintGL ()
 {
     // En cas de voler canviar els paràmetres del viewport, descomenteu la crida següent i
     // useu els paràmetres que considereu (els que hi ha són els de per defecte)
@@ -44,7 +44,7 @@ void BL2GLWidget::paintGL ()
     glBindVertexArray (0);
 }
 
-void BL2GLWidget::modelTransform ()
+void LaberintBase::modelTransform ()
 {
     // Matriu de transformació de model
     glm::mat4 transform (1.0f);
@@ -52,7 +52,7 @@ void BL2GLWidget::modelTransform ()
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
-void BL2GLWidget::resizeGL (int w, int h)
+void LaberintBase::resizeGL (int w, int h)
 {
 // Aquest codi és necessari únicament per a MACs amb pantalla retina.
 #ifdef __APPLE__
@@ -66,7 +66,7 @@ void BL2GLWidget::resizeGL (int w, int h)
 #endif
 }
 
-void BL2GLWidget::keyPressEvent(QKeyEvent* event)
+void LaberintBase::keyPressEvent(QKeyEvent* event)
 {
     makeCurrent();
     switch (event->key()) {
@@ -83,7 +83,7 @@ void BL2GLWidget::keyPressEvent(QKeyEvent* event)
     update();
 }
 
-void BL2GLWidget::creaBuffers ()
+void LaberintBase::creaBuffers ()
 {
     // Dades de la caseta
     // Dos VBOs, un amb posició i l'altre amb color
@@ -133,7 +133,7 @@ void BL2GLWidget::creaBuffers ()
     glBindVertexArray (0);
 }
 
-void BL2GLWidget::carregaShaders()
+void LaberintBase::carregaShaders()
 {
     // Creem els shaders per al fragment shader i el vertex shader
     QOpenGLShader fs (QOpenGLShader::Fragment, this);
@@ -160,7 +160,7 @@ void BL2GLWidget::carregaShaders()
 }
 
 
-int BL2GLWidget::printOglError(const char file[], int line, const char func[])
+int LaberintBase::printOglError(const char file[], int line, const char func[])
 {
     GLenum glErr;
     int    retCode = 0;

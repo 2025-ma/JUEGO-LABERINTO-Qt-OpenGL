@@ -2,15 +2,16 @@
 
 TEMPLATE    = app
 QT         += opengl
+TARGET = laberint
 
 
 INCLUDEPATH += ./glm ./Model
 
 FORMS += MyForm.ui
 
-HEADERS += MyForm.h BL2GLWidget.h MyGLWidget.h
+HEADERS += MyForm.h LaberintBase.h Laberint.h
 
-SOURCES += main.cpp MyForm.cpp  BL2GLWidget.cpp  MyGLWidget.cpp Model/model.cpp
+SOURCES += main.cpp MyForm.cpp  LaberintBase.cpp  Laberint.cpp Model/model.cpp
 
 DISTFILES += \
     shaders/basicShader.frag \
