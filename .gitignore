@@ -1,0 +1,13 @@
+# Qt Creator
+*.pro.user
+*.pro.user.*
+
+# Build
+build/
+Build/
+cmake-build-*/
+
+# Compilación
+*.o
+*.obj
+Makefile
