@@ -70,7 +70,7 @@ Para compilar y ejecutar el proyecto se necesita:
 * **make**.
 * Un compilador de C++, como `g++`.
 
-Para compilar el proyecto, primero hay que situarse en el directorio donde se encuentra el archivo `.pro`.
+Primero hay que situarse en el directorio donde se encuentra el archivo `.pro`.
 
 ```bash
 cd Laberint
