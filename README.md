@@ -1,14 +1,14 @@
-# 👻 Ghost in the Maze
+# Ghost in the Maze
 
 **Videojuego 3D de un laberinto desarrollado con Qt y OpenGL** 
 
-## 🎮 Descripción del proyecto
+## Descripción del proyecto
 
 Ghost in the Maze es un videojuego en 3D en el que el jugador debe recorrer un laberinto, recoger 10 monedas y llegar a la salida sin que lo atrape el fantasma.
 
 El proyecto se centra en los gráficos 3D, los sistemas de cámara, las transformaciones geométricas, la iluminación y la interacción con el usuario.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 * **Laberinto 3D:** generación de la escena a partir de una matriz que representa las paredes y las zonas transitables.
 * **Movimiento del jugador:** desplazamiento por el laberinto evitando obstáculos.
@@ -21,7 +21,7 @@ El proyecto se centra en los gráficos 3D, los sistemas de cámara, las transfor
 * **Modo nocturno:** iluminación alternativa y linterna para el personaje.
 * **Interfaz gráfica:** inicio y reinicio de la partida, contador de monedas y mensajes de victoria o fin de partida.
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 * **Qt:** interfaz gráfica e interacción con el usuario.
 * **OpenGL:** renderizado y gestión de la escena 3D.
@@ -29,7 +29,7 @@ El proyecto se centra en los gráficos 3D, los sistemas de cámara, las transfor
 * **Assimp:** carga de modelos 3D.
 * **C++:**
   
-## 🕹️ Cómo jugar
+## Cómo jugar
 
 ### Objetivo
 
@@ -60,4 +60,21 @@ Recoge las 10 monedas repartidas por el laberinto y llega a la salida sin que te
 
 El juego incluye distintas opciones de visualización, como la vista general del laberinto, la vista en primera persona y una vista aérea en miniatura. También permite modificar la cámara y experimentar con la iluminación y el modo nocturno desde los controles disponibles en la interfaz.
 
+## 🖼️ Capturas del juego
+
+### Vista inicial del juego
+
+![Vista inicial del juego](capturas/Inicio_Juego.png)
+
+### Vista en primera persona
+
+![Vista primera persona](capturas/Vista_Primera_Persona.png)
+
+### Modo nocturno
+
+![Modo nocturno](capturas/Modo_noche.png)
+
+### Cambio del color de la iluminación
+
+![Cambio color](capturas/Cambio_Color_Iluminacion.png)
 
