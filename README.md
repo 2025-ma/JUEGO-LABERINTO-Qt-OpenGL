@@ -60,6 +60,53 @@ Recoge las 10 monedas repartidas por el laberinto y llega a la salida sin que te
 
 El juego incluye distintas opciones de visualización, como la vista general del laberinto, la vista en primera persona y una vista aérea en miniatura. También permite modificar la cámara y experimentar con la iluminación y el modo nocturno desde los controles disponibles en la interfaz.
 
+## Compilación proyecto
+
+Para compilar y ejecutar el proyecto se necesita:
+
+* Un sistema operativo **Linux**.
+* **Qt** instalado.
+* **qmake**.
+* **make**.
+* Un compilador de C++, como `g++`.
+
+Para compilar el proyecto, primero hay que situarse en el directorio donde se encuentra el archivo `.pro`.
+
+```bash
+cd Laberint
+cd entrega
+```
+
+A continuación, ejecutar:
+
+```bash
+qmake
+```
+Después, ejecutar:
+
+```bash
+make
+```
+
+Si la compilación termina correctamente, se generará el ejecutable del proyecto.
+
+## Ejecución
+
+Una vez compilado, ejecutar el programa mediante:
+
+```bash
+./Laberint
+```
+## Limpieza
+
+Para eliminar los archivos generados durante la compilación se puede utilizar:
+
+```bash
+make clean
+```
+
+Esto permite volver a compilar el proyecto desde cero si fuera necesario.
+
 ## Capturas del juego
 
 ### Vista inicial del juego
