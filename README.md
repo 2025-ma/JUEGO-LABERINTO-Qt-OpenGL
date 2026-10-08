@@ -60,7 +60,7 @@ Recoge las 10 monedas repartidas por el laberinto y llega a la salida sin que te
 
 El juego incluye distintas opciones de visualización, como la vista general del laberinto, la vista en primera persona y una vista aérea en miniatura. También permite modificar la cámara y experimentar con la iluminación y el modo nocturno desde los controles disponibles en la interfaz.
 
-## 🖼️ Capturas del juego
+## Capturas del juego
 
 ### Vista inicial del juego
 
