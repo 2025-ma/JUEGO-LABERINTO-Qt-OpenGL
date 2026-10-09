@@ -1,83 +1,84 @@
 # Ghost in the Maze
 
-**Videojuego 3D de un laberinto desarrollado con Qt y OpenGL** 
+**3D Maze Video Game Developed with Qt and OpenGL**
 
-## Descripción del proyecto
+## Project Description
 
-Ghost in the Maze es un videojuego en 3D en el que el jugador debe recorrer un laberinto, recoger 10 monedas y llegar a la salida sin que lo atrape el fantasma.
+Ghost in the Maze is a 3D video game in which the player must explore a maze, collect 10 coins, and reach the exit without being caught by the ghost.
 
-El proyecto se centra en los gráficos 3D, los sistemas de cámara, las transformaciones geométricas, la iluminación y la interacción con el usuario.
+The project focuses on 3D graphics, camera systems, geometric transformations, lighting, and user interaction.
 
-## Funcionalidades
+## Features
 
-* **Laberinto 3D:** generación de la escena a partir de una matriz que representa las paredes y las zonas transitables.
-* **Movimiento del jugador:** desplazamiento por el laberinto evitando obstáculos.
-* **Comportamiento del enemigo:** movimiento automático del fantasma por el laberinto.
-* **Recogida de monedas:** recolección de monedas distribuidas por el escenario.
-* **Diferentes cámaras:** vista general en perspectiva, vista en primera persona y minimapa con vista aérea.
-* **Controles interactivos de cámara:** rotación de la escena y control del zoom.
-* **Gráficos 3D:** uso de modelos, texturas y transformaciones geométricas.
-* **Shaders e iluminación:** iluminación ambiental, focos de luz y shaders de vértices y fragmentos.
-* **Modo nocturno:** iluminación alternativa y linterna para el personaje.
-* **Interfaz gráfica:** inicio y reinicio de la partida, contador de monedas y mensajes de victoria o fin de partida.
+* **3D Maze:** Generation of the scene from a matrix representing the walls and navigable areas.
+* **Player Movement:** Navigating through the maze while avoiding obstacles.
+* **Enemy Behavior:** Automatic movement of the ghost through the maze.
+* **Coin Collection:** Collecting coins distributed throughout the scene.
+* **Different Camera Views:** Perspective overview, first-person view, and minimap with a top-down view.
+* **Interactive camera controls:** rotating the scene and controlling the zoom.
+* **3D graphics:** use of models, textures, and geometric transformations.
+* **Shaders and lighting:** ambient lighting, spotlights, and vertex and fragment shaders.
+* **Night mode:** alternative lighting and a flashlight for the character.
+* **Graphical interface:** start and restart the game, coin counter, and victory or end-of-game messages.
 
-## Tecnologías utilizadas
+## Technologies Used
 
-* **Qt:** interfaz gráfica e interacción con el usuario.
-* **OpenGL:** renderizado y gestión de la escena 3D.
-* **GLSL:** programación de shaders y efectos de iluminación.
-* **Assimp:** carga de modelos 3D.
+* **Qt:** graphical interface and user interaction.
+* **OpenGL:** rendering and 3D scene management.
+* **GLSL:** shader programming and lighting effects.
+* **Assimp:** 3D model loading.
 * **C++:**
-  
-## Cómo jugar
 
-### Objetivo
+## How to Play
 
+### Objective
+
+Collect the 10 coins scattered throughout the maze and reach the exit without getting caught by the ghost.
 Recoge las 10 monedas repartidas por el laberinto y llega a la salida sin que te atrape el fantasma.
 
-### Controles
+### Controls
 
-| Tecla / acción      | Función                                                                      |
+| Key / Action        | Function                                                                     |
 | ------------------- | ---------------------------------------------------------------------------- |
-| ⬆️ Flecha arriba    | Avanzar hacia delante                                                        |
-| ⬅️ Flecha izquierda | Girar 90° hacia la izquierda                                                 |
-| ➡️ Flecha derecha   | Girar 90° hacia la derecha                                                   |
-| `C`                 | Alternar entre las vistas de cámara disponibles mediante esta tecla          |
-| `+` / `-`           | Acercar o alejar la cámara                                                   |
-| Ratón               | Rotar la vista general                                                       |
-| `N`                 | Activar o desactivar el modo nocturno                                        |
+| ⬆️ Up arrow         | Move forward                                                                 |
+| ⬅️ Left arrow       | Rotate 90° to the left                                                       |
+| ➡️ Right arrow      | Rotate 90° to the right                                                      |
+| `C`                 | Toggle between available camera views using this key                         |
+| `+` / `-`           | Zoom the camera in or out                                                    |
+| Mouse               | Rotate the overview                                                          |
+| `N`                 | Turn night mode on or off                                                    |
 
-### Desarrollo de la partida
+### Gameplay
 
-1. Pulsa **Start Game** en la interfaz para iniciar la partida.
-2. Muévete por el laberinto usando las flechas del teclado.
-3. Recoge las monedas mientras evitas al fantasma.
-4. Consigue las 10 monedas y llega a una salida para ganar.
-5. Si el fantasma te atrapa, la partida termina.
-6. Pulsa **Start Game** de nuevo para reiniciar la partida.
+1. Click **Start Game** on the interface to begin the game.
+2. Move through the maze using the arrow keys.
+3. Collect the coins while avoiding the ghost.
+4. Collect all 10 coins and reach an exit to win.
+5. If the ghost catches you, the game ends.
+6. Click **Start Game** again to restart the game.
 
-### Cámaras e iluminación
+### Cameras and Lighting
 
-El juego incluye distintas opciones de visualización, como la vista general del laberinto, la vista en primera persona y una vista aérea en miniatura. También permite modificar la cámara y experimentar con la iluminación y el modo nocturno desde los controles disponibles en la interfaz.
+The game includes various viewing options, such as an overview of the maze, a first-person view, and a miniature aerial view. It also allows you to adjust the camera and experiment with lighting and night mode using the controls available in the interface.
 
-## Compilación proyecto
+## Compiling the Project
 
-Para compilar y ejecutar el proyecto se necesita:
+To compile and run the project, you need:
 
-* Un sistema operativo **Linux**.
-* **Qt** instalado.
+* A **Linux** operating system.
+* **Qt** installed.
 * **qmake**.
 * **make**.
-* Un compilador de C++, como `g++`.
+* A C++ compiler, such as `g++`.
 
-Primero hay que situarse en el directorio donde se encuentra el archivo `.pro`.
+First, navigate to the directory where the `.pro` file is located.
 
 ```bash
 cd Laberint
 cd entrega
 ```
 
-A continuación, ejecutar:
+Next, run:
 
 ```bash
 qmake
@@ -88,40 +89,40 @@ Después, ejecutar:
 make
 ```
 
-Si la compilación termina correctamente, se generará el ejecutable del proyecto.
+If the compilation completes successfully, the project's executable will be generated.
 
-## Ejecución
+## Running the Program
 
-Una vez compilado, ejecutar el programa mediante:
+Once compiled, run the program using:
 
 ```bash
 ./Laberint
 ```
-## Limpieza
+## Cleaning Up
 
-Para eliminar los archivos generados durante la compilación se puede utilizar:
+To delete the files generated during compilation, use:
 
 ```bash
 make clean
 ```
 
-Esto permite volver a compilar el proyecto desde cero si fuera necesario.
+This allows you to recompile the project from scratch if necessary.
 
-## Capturas del juego
+## Game Screenshots
 
-### Vista inicial del juego
+### Game Start Screen
 
 ![Vista inicial del juego](capturas/Inicio_Juego.png)
 
-### Vista en primera persona
+### First-Person View
 
 ![Vista primera persona](capturas/Vista_Primera_Persona.png)
 
-### Modo nocturno
+### Night Mode
 
 ![Modo nocturno](capturas/Modo_noche.png)
 
-### Cambio del color de la iluminación
+### Changing the lighting color
 
 ![Cambio color](capturas/Cambio_Color_Iluminacion.png)
 
